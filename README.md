@@ -6,7 +6,7 @@ Launcher alternativo y open source para Minecraft Java Edition.
 > por ni asociado con Mojang o Microsoft.
 
 ```
-# ⚠️ Source Code Notice
+ ⚠️ Source Code Notice
 
 This repository is provided for educational, transparency, and portfolio purposes only.
 
