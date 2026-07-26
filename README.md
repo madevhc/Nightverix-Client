@@ -1,6 +1,6 @@
 # Nightverix Client
 
-Launcher alternativo y open source para Minecraft Java Edition.
+Launcher/Cliente alternativo y open source para Minecraft Java Edition.
 
 > Nightverix Client no es un producto oficial de Minecraft. No está aprobado
 > por ni asociado con Mojang o Microsoft.
