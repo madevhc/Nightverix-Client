@@ -1,0 +1,54 @@
+/**
+ * Sidebar — riel de navegación con iconos.
+ * Usa el sistema de tokens (tokens.css) para que reaccione correctamente
+ * al cambio de tema claro/oscuro. Nada de colores hardcodeados aquí.
+ */
+
+.sidebar {
+  position: fixed;
+  top: 40px; /* alto del TitleBar */
+  left: 0;
+  bottom: 0;
+  width: 72px;
+
+  background: color-mix(in srgb, var(--bg-elevated) 70%, transparent);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border-right: 1px solid var(--border);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+
+  padding: var(--space-4) 0;
+}
+
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  text-decoration: none;
+
+  transition: background-color var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard);
+}
+
+.sidebar__link:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+}
+
+.sidebar__link[aria-current="page"] {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+.sidebar__spacer {
+  flex: 1;
+}

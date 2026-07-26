@@ -1,0 +1,283 @@
+/* ══════════════════════════════════════════════════════════════════════
+   Menú principal — usa el <PageScene> compartido (ver src/PageScene.css)
+   para el panorama; aquí solo quedan los elementos propios de esta pantalla.
+   ══════════════════════════════════════════════════════════════════════ */
+
+.mainmenu__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display, var(--font-ui));
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+  letter-spacing: 0.12em;
+  color: #fff;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.mainmenu__logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 14px rgba(124, 58, 237, 0.5));
+}
+
+.mainmenu__main {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-6);
+  align-items: stretch;
+  margin-top: auto;
+  margin-bottom: var(--space-4);
+}
+
+/* ── Tarjeta de bienvenida ───────────────────────────────────────────── */
+
+.glass-card--hero {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-8);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.glass-card__watermark {
+  position: absolute;
+  top: 50%;
+  right: 6%;
+  width: 320px;
+  height: auto;
+  transform: translateY(-58%);
+  opacity: 0.16;
+  filter: drop-shadow(0 0 60px rgba(124, 138, 255, 0.5));
+  pointer-events: none;
+  transition: transform 0.2s ease-out;
+}
+
+.glass-card--hero__body {
+  position: relative;
+  z-index: 1;
+}
+
+.glass-card--hero h1 {
+  margin-top: 6px;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: var(--weight-semibold);
+  color: #fff;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+.glass-card--hero > p {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.65);
+  font-size: var(--text-sm);
+  max-width: 46ch;
+}
+
+/* ── Botón con brillo animado ────────────────────────────────────────── */
+
+.glow-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin-top: var(--space-6);
+  padding: 14px 34px;
+  border-radius: 12px;
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: #fff;
+  background: linear-gradient(135deg, #5b6bf5, #8b5cf6);
+  overflow: hidden;
+  box-shadow: 0 14px 34px -10px rgba(91, 107, 245, 0.65);
+  transition: transform 0.15s ease-out;
+}
+
+.glow-btn:hover {
+  transform: translateY(-2px);
+}
+
+.glow-btn span {
+  position: relative;
+  z-index: 1;
+}
+
+.glow-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -60%;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(115deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+}
+
+.glow-btn:hover::before {
+  left: 130%;
+}
+
+/* ── Chips de resumen ────────────────────────────────────────────────── */
+
+.mainmenu__chips {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}
+
+.mainmenu__chip {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: border-color 0.15s ease, background-color 0.15s ease, transform 0.15s ease;
+}
+
+.mainmenu__chip:hover {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.09);
+  transform: translateY(-1px);
+}
+
+.mainmenu__chip strong {
+  font-family: var(--font-mono);
+  font-size: var(--text-md);
+  color: #fff;
+}
+
+.mainmenu__chip span {
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ── Panel de noticias ───────────────────────────────────────────────── */
+
+.glass-card--news {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.glass-card--news h2 {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-semibold);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.8;
+  flex-shrink: 0;
+}
+
+.news-list {
+  margin-top: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.news-item {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.news-item__thumb {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(150deg, #5b6bf5, #06d6e2 130%);
+}
+
+.news-item__tag {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #7dd3fc;
+}
+
+.news-item h3 {
+  margin-top: 3px;
+  font-size: 0.85rem;
+  font-weight: var(--weight-medium);
+  color: #fff;
+}
+
+.news-item p {
+  margin-top: 3px;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ── Barra inferior de estado ────────────────────────────────────────── */
+
+.statusbar {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-6);
+  height: 52px;
+  margin: 0 calc(-1 * var(--space-10)) calc(-1 * var(--space-6));
+  background: rgba(6, 6, 16, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.statusbar__user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: var(--text-sm);
+  color: #fff;
+}
+
+.statusbar__avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  image-rendering: pixelated;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.statusbar__avatar--empty {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.statusbar__metrics {
+  display: flex;
+  gap: var(--space-5);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+@media (max-width: 900px) {
+  .mainmenu__main {
+    grid-template-columns: 1fr;
+  }
+  .statusbar__metrics {
+    gap: var(--space-3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glow-btn::before {
+    display: none;
+  }
+}

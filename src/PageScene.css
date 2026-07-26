@@ -1,0 +1,224 @@
+/* ══════════════════════════════════════════════════════════════════════
+   Escena compartida — full-bleed, se sale del padding normal del layout
+   para que el panorama llegue hasta los bordes. Usada por todas las
+   pantallas (no solo el menú principal).
+   ══════════════════════════════════════════════════════════════════════ */
+
+.page-scene {
+  position: relative;
+  margin: calc(-1 * var(--space-8)) calc(-1 * var(--space-10));
+  min-height: calc(100vh - 40px);
+}
+
+@media (max-width: 720px) {
+  .page-scene {
+    margin: calc(-1 * var(--space-6));
+  }
+}
+
+/* ── Panorama original (silueta genérica, sin assets de Mojang) ────────── */
+
+.panorama {
+  position: fixed;
+  top: 40px; /* debajo del TitleBar */
+  left: 72px; /* a la derecha de la Sidebar */
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.panorama__sky {
+  position: absolute;
+  inset: -5%;
+  background:
+    radial-gradient(60% 50% at 78% 8%, rgba(124, 139, 255, 0.35), transparent 60%),
+    radial-gradient(80% 60% at 15% 100%, rgba(6, 214, 226, 0.14), transparent 65%),
+    linear-gradient(180deg, #0a0c18 0%, #12122b 35%, #1b1440 65%, #2a1450 100%);
+}
+
+[data-theme="light"] .panorama__sky {
+  background:
+    radial-gradient(60% 50% at 78% 8%, rgba(124, 139, 255, 0.18), transparent 60%),
+    radial-gradient(80% 60% at 15% 100%, rgba(6, 214, 226, 0.1), transparent 65%),
+    linear-gradient(180deg, #dfe3ff 0%, #eef0ff 40%, #f7eefc 100%);
+}
+
+.panorama__moon {
+  position: absolute;
+  top: 12%;
+  right: 16%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #e8ecff, #9ea8f5 55%, transparent 75%);
+  box-shadow: 0 0 90px 20px rgba(157, 141, 255, 0.35);
+}
+
+.panorama__stars {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 10% 20%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 25% 45%, #fff, transparent),
+    radial-gradient(1px 1px at 40% 15%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 60% 30%, #fff, transparent),
+    radial-gradient(1px 1px at 75% 10%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 85% 40%, #fff, transparent),
+    radial-gradient(1px 1px at 33% 60%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 92% 22%, #fff, transparent),
+    radial-gradient(1px 1px at 15% 55%, #fff, transparent),
+    radial-gradient(1.5px 1.5px at 55% 8%, #fff, transparent);
+  opacity: 0.55;
+}
+
+[data-theme="light"] .panorama__stars,
+[data-theme="light"] .panorama__moon {
+  opacity: 0.35;
+}
+
+.panorama__mountains {
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  bottom: 0;
+  height: 42%;
+  color: #171034;
+}
+
+.panorama__mountains svg path {
+  fill: currentColor;
+}
+
+.panorama__mountains--far {
+  bottom: 6%;
+  height: 34%;
+  color: #221c48;
+  opacity: 0.85;
+}
+
+.panorama__mountains--near {
+  color: #0f0b26;
+}
+
+[data-theme="light"] .panorama__mountains--far { color: #c7cdfb; opacity: 0.7; }
+[data-theme="light"] .panorama__mountains--near { color: #a9b0f2; }
+
+.panorama__vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 90% at 50% 100%, transparent 40%, rgba(4, 4, 12, 0.55) 100%),
+    linear-gradient(180deg, rgba(4, 4, 12, 0.25) 0%, transparent 20%);
+  pointer-events: none;
+}
+
+[data-theme="light"] .panorama__vignette {
+  background:
+    radial-gradient(120% 90% at 50% 100%, transparent 55%, rgba(255, 255, 255, 0.4) 100%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 20%);
+}
+
+/* ── Contenido por encima del panorama ───────────────────────────────── */
+
+.page-scene__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 40px);
+  padding: var(--space-8) var(--space-10);
+  gap: var(--space-6);
+}
+
+@media (max-width: 720px) {
+  .page-scene__content {
+    padding: var(--space-6);
+  }
+}
+
+/* ── Cabecera "hero" reutilizable (eyebrow + título + logo) ─────────────── */
+
+.mainmenu__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #a5b4ff;
+}
+
+[data-theme="light"] .mainmenu__eyebrow {
+  color: var(--accent-strong);
+}
+
+.page-header {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-6) var(--space-8);
+  flex-shrink: 0;
+}
+
+.page-header__watermark {
+  position: absolute;
+  top: 50%;
+  right: 4%;
+  width: 130px;
+  height: auto;
+  transform: translateY(-50%);
+  opacity: 0.14;
+  filter: drop-shadow(0 0 40px rgba(124, 138, 255, 0.5));
+  pointer-events: none;
+}
+
+.page-header__body {
+  position: relative;
+  z-index: 1;
+}
+
+.page-header__row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-top: 6px;
+}
+
+.page-header__row h1 {
+  font-family: var(--font-display, var(--font-ui));
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.page-header__row p {
+  margin-top: 6px;
+  color: var(--text-secondary);
+  font-size: var(--text-sm);
+}
+
+.page-header__actions {
+  flex-shrink: 0;
+}
+
+/* ── Base de tarjeta de cristal, usada en toda la app ────────────────── */
+
+.glass-card {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.02));
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 20px;
+  box-shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+}
+
+[data-theme="light"] .glass-card {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.35));
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 50px -24px rgba(30, 30, 60, 0.25);
+}
+
+[data-theme="light"] .page-header__row h1,
+[data-theme="light"] .page-header__row p {
+  color: var(--text-primary);
+}

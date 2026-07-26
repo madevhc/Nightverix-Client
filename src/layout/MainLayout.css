@@ -1,0 +1,22 @@
+.main-layout {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: var(--ambient-bg);
+}
+
+.main-layout__content {
+  position: absolute;
+  top: 40px; /* alto del TitleBar */
+  left: 72px; /* ancho del Sidebar */
+  right: 0;
+  bottom: 0;
+  overflow-y: auto;
+  padding: var(--space-8) var(--space-10);
+}
+
+@media (max-width: 720px) {
+  .main-layout__content {
+    padding: var(--space-6);
+  }
+}

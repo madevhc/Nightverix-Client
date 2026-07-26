@@ -1,0 +1,119 @@
+.instances__header h1 {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.instances__header p {
+  margin-top: var(--space-1);
+  color: var(--text-secondary);
+}
+
+.instances__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.instance-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.instance-card__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.instance-card__badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--text-xs);
+  color: var(--success);
+  font-weight: var(--weight-medium);
+  margin-bottom: var(--space-1);
+}
+
+.instance-card__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--success) 20%, transparent);
+}
+
+.instance-card__top h3 {
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+}
+
+.instance-card__meta {
+  display: block;
+  margin-top: 2px;
+  font-size: var(--text-xs);
+  font-family: var(--font-mono);
+  color: var(--text-tertiary);
+}
+
+.instance-card__stats {
+  display: flex;
+  align-items: flex-end;
+  gap: var(--space-4);
+}
+
+.instance-card__stat {
+  flex: 1;
+  min-width: 0;
+}
+
+.instance-card__stat-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-2);
+}
+
+.instance-card__stat-label strong {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  color: var(--text-primary);
+  font-weight: var(--weight-medium);
+}
+
+.instance-card__side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  flex-shrink: 0;
+}
+
+.instance-card__cpu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font-size: var(--text-xs);
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+}
+
+.instance-card__cpu strong {
+  font-family: var(--font-mono);
+  font-size: var(--text-lg);
+  color: var(--text-primary);
+  font-weight: var(--weight-semibold);
+}

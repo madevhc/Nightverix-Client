@@ -1,0 +1,37 @@
+# Node
+node_modules/
+
+# Frontend
+dist/
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+
+# Rust / Tauri
+src-tauri/target/
+src-tauri/gen/
+
+# Environment
+.env
+.env.*
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
+
+# macOS (chatgpt me dijo que lo agregara)
+.DS_Store
+
+# Private authentication module
+src-tauri/src/auth.rs
+
+# Kanade
+!Kanade/
+
+# CinnxSteve
+!CinnxSteve/
+!CinnxSteve/key.json
+!CinnxSteve/quesadilla.png

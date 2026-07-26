@@ -1,0 +1,79 @@
+.titlebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  background: var(--titlebar-bg);
+  backdrop-filter: var(--backdrop-blur);
+  -webkit-backdrop-filter: var(--backdrop-blur);
+  border-bottom: 1px solid var(--border);
+  z-index: var(--z-titlebar);
+  user-select: none;
+  /* Sin padding global — los controles llegan hasta el borde derecho exacto */
+}
+
+.titlebar__drag {
+  position: absolute;
+  inset: 0;
+}
+
+.titlebar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  pointer-events: none;
+  padding-left: var(--space-4);
+  flex: 1;
+}
+
+.titlebar__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: var(--accent);
+}
+
+.titlebar__controls {
+  position: relative;
+  display: flex;
+  gap: 0;
+  z-index: 1;
+  /* Pegados al borde derecho sin margen extra */
+  margin-left: auto;
+}
+
+/* Botones estilo Windows 11 exactos: 46×40, sin border-radius, sin gaps */
+.titlebar__button {
+  width: 46px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  border-radius: 0;
+  display: grid;
+  place-items: center;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition:
+    background-color var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard);
+}
+
+.titlebar__button:hover {
+  background: var(--surface-hover);
+  color: var(--text-primary);
+}
+
+.titlebar__button--close:hover {
+  background: #c42b1c;
+  color: #ffffff;
+}
+
+.titlebar__button--close:active {
+  background: #a82110;
+}
