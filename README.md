@@ -1,6 +1,9 @@
 ![Nightverix Logo](public/nightverix-logo.png)
 # Nightverix Client
 Launcher/Cliente alternativo y open source para Minecraft Java Edition.
+https://img.shields.io/badge/Versi%C3%B3n-0.1.0%20Alpha-blue
+https://img.shields.io/badge/Status-Alpha%20Advanced-brightgreen
+
 
 > Nightverix Client no es un producto oficial de Minecraft. No está aprobado
 > por ni asociado con Mojang o Microsoft.
